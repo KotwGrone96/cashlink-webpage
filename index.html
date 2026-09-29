@@ -54,9 +54,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     </div>
   </div>
-  <a href="https://wa.me/5491150215049?text=Quiero%20ser%20asesorado%20para%20un%20pr%C3%A9stamo" target="_blank">
-    <img src="./images/ic-wp.png" alt="WhatsApp Icon" class="whatsapp-icon">
-  </a>
+  <button id="mainActionBtn" class="floating-action-btn">
+    <span class="btn-text">Quiero mi préstamo</span>
+    <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+      <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/>
+      <path d="M7 9h10v2H7zm0-3h10v2H7zm0 6h7v2H7z"/>
+    </svg>
+  </button>
 
   <div class="content-steps">
 
@@ -311,32 +315,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             placeholder="Teléfono">
           <div class="error" id="phoneError">Por favor, ingrese un número de teléfono válido.</div>
           <br>
-          <!-- <select id="province" name="provincia">
-            <option value="">Provincia</option>
-            <option value="1">Buenos Aires</option>
-            <option value="2">Catamarca</option>
-            <option value="3">Chaco</option>
-            <option value="4">Chubut</option>
-            <option value="5">Córdoba</option>
-            <option value="6">Corrientes</option>
-            <option value="7">Entre Ríos</option>
-            <option value="8">Formosa</option>
-            <option value="9">Jujuy</option>
-            <option value="10">La Pampa</option>
-            <option value="11">La Rioja</option>
-            <option value="12">Mendoza</option>
-            <option value="13">Misiones</option>
-            <option value="14">Neuquén</option>
-            <option value="15">Río Negro</option>
-            <option value="16">Salta</option>
-            <option value="17">San Juan</option>
-            <option value="18">San Luis</option>
-            <option value="19">Santa Cruz</option>
-            <option value="20">Santa Fe</option>
-            <option value="21">Santiago del Estero</option>
-            <option value="22">Tierra del Fuego</option>
-            <option value="23">Tucumán</option>
-          </select> -->
           <select id="province" name="provincia">
             <option value="">Provincia</option>
             <option value="Buenos Aires">Buenos Aires</option>
@@ -366,12 +344,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <div class="error" id="provinceError">Por favor, elija una provincia.</div>
           <br>
-          <!-- <select id="gender" name="sexo">
-            <option value="">Género</option>
-            <option value="male">Hombre</option>
-            <option value="female">Mujer</option>
-            <option value="non-binary">No Especificado</option>
-          </select> -->
           <select id="gender" name="sexo">
             <option value="">Género</option>
             <option value="Hombre">Hombre</option>
@@ -386,16 +358,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <div id="step3" class="step">
-          <!-- <select id="destination" name="destinoPrestamo" required>
-              <option value="">Seleccionar...</option>
-              <option value="1">Para mi negocio</option>
-              <option value="2">Para saldar deudas</option>
-              <option value="3">Para comprar un auto</option>
-              <option value="4">Para reforma de vivienda</option>
-              <option value="5">Para un viaje</option>
-              <option value="6">Para comprar una casa</option>
-              <option value="7">Otro</option>
-          </select> -->
           <select id="destination" name="destinoPrestamo" required>
               <option value="">Seleccionar...</option>
               <option value="Para mi negocio">Para mi negocio</option>
@@ -408,86 +370,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </select>
           <div class="error" id="destinationError">Por favor, seleccione un destino.</div>
           <br>
-          <!-- <select id="bank" name="bancoCobro" required>
-            <option value="">Banco</option>
-            <option value="b1">BANCO DE GALICIA Y BUENOS AIRES S.A.U.</option>
-            <option value="b2">BANCO DE LA NACION ARGENTINA</option>
-            <option value="b3">BANCO DE LA PROVINCIA DE BUENOS AIRES</option>
-            <option value="b4">INDUSTRIAL AND COMMERCIAL BANK OF CHINA</option>
-            <option value="b5">CITIBANK N.A.</option>
-            <option value="b6">BANCO BBVA ARGENTINA S.A.</option>
-            <option value="b7">BANCO DE LA PROVINCIA DE CORDOBA S.A.</option>
-            <option value="b8">BANCO SUPERVIELLE S.A.</option>
-            <option value="b9">BANCO DE LA CIUDAD DE BUENOS AIRES</option>
-            <option value="b10">BANCO PATAGONIA S.A.</option>
-            <option value="b11">BANCO HIPOTECARIO S.A.</option>
-            <option value="b12">BANCO DE SAN JUAN S.A.</option>
-            <option value="b13">BANCO MUNICIPAL DE ROSARIO</option>
-            <option value="b14">BANCO SANTANDER ARGENTINA S.A.</option>
-            <option value="b15">BANCO DEL CHUBUT S.A.</option>
-            <option value="b16">BANCO DE SANTA CRUZ S.A.</option>
-            <option value="b17">BANCO DE LA PAMPA SOCIEDAD DE ECONOMÍA M</option>
-            <option value="b18">BANCO DE CORRIENTES S.A.</option>
-            <option value="b19">BANCO PROVINCIA DEL NEUQUÉN SOCIEDAD ANÓNIMA</option>
-            <option value="b20">BANK OF CHINA LIMITED SUCURSAL BUENOS AIRES</option>
-            <option value="b21">BRUBANK S.A.U.</option>
-            <option value="b22">BIBANK S.A.</option>
-            <option value="b23">HSBC BANK ARGENTINA S.A.</option>
-            <option value="b24">OPEN BANK ARGENTINA S.A.</option>
-            <option value="b25">JPMORGAN CHASE BANK, NATIONAL ASSOCIATION</option>
-            <option value="b26">BANCO CREDICOOP COOPERATIVO LIMITADO</option>
-            <option value="b27">BANCO DE VALORES S.A.</option>
-            <option value="b28">BANCO ROELA S.A.</option>
-            <option value="b29">BANCO MARIVA S.A.</option>
-            <option value="b30">BANCO BMA S.A.U.</option>
-            <option value="b31">BNP PARIBAS</option>
-            <option value="b32">BANCO PROVINCIA DE TIERRA DEL FUEGO</option>
-            <option value="b33">BANCO DE LA REPUBLICA ORIENTAL DEL URUGUAY</option>
-            <option value="b34">BANCO SAENZ S.A.</option>
-            <option value="b35">BANCO MERIDIAN S.A.</option>
-            <option value="b36">BANCO MACRO S.A.</option>
-            <option value="b37">BANCO COMAFI SOCIEDAD ANONIMA</option>
-            <option value="b38">BANCO DE INVERSION Y COMERCIO EXTERIOR S.A.</option>
-            <option value="b39">BANCO PIANO S.A.</option>
-            <option value="b40">BANCO JULIO SOCIEDAD ANONIMA</option>
-            <option value="b41">BANCO RIOJA SOCIEDAD ANONIMA UNIPERSONAL</option>
-            <option value="b42">BANCO DEL SOL S.A.</option>
-            <option value="b43">NUEVO BANCO DEL CHACO S.A.</option>
-            <option value="b44">BANCO VOII S.A.</option>
-            <option value="b45">BANCO DE FORMOSA S.A.</option>
-            <option value="b46">BANCO CMF S.A.</option>
-            <option value="b47">BANCO DE SANTIAGO DEL ESTERO S.A.</option>
-            <option value="b48">BANCO INDUSTRIAL S.A.</option>
-            <option value="b49">NUEVO BANCO DE SANTA FE SOCIEDAD ANONIMA</option>
-            <option value="b50">BANCO CETELEM ARGENTINA S.A.</option>
-            <option value="b51">BANCO DE SERVICIOS FINANCIEROS S.A.</option>
-            <option value="b52">BANCO DE SERVICIOS Y TRANSACCIONES S.A.</option>
-            <option value="b53">RCI BANQUE S.A.</option>
-            <option value="b54">BACS BANCO DE CREDITO Y SECURITIZACION S.A.</option>
-            <option value="b55">BANCO MASVENTAS S.A.</option>
-            <option value="b56">WILOBANK S.A.U.</option>
-            <option value="b57">NUEVO BANCO DE ENTRE RÍOS S.A.</option>
-            <option value="b58">BANCO COLUMBIA S.A.</option>
-            <option value="b59">BANCO BICA S.A.</option>
-            <option value="b60">BANCO COINAG S.A.</option>
-            <option value="b61">BANCO DE COMERCIO S.A.</option>
-            <option value="b62">BANCO SUCREDITO REGIONAL S.A.U.</option>
-            <option value="b63">BANCO DINO S.A.</option>
-            <option value="b64">COMPAÑIA FINANCIERA ARGENTINA S.A.</option>
-            <option value="b65">VOLKSWAGEN FINANCIAL SERVICES COMPAÑIA FINANCIERA S.A.</option>
-            <option value="b66">IUDU COMPAÑÍA FINANCIERA S.A.</option>
-            <option value="b67">FCA COMPAÑIA FINANCIERA S.A.</option>
-            <option value="b68">GPAT COMPAÑIA FINANCIERA S.A.U.</option>
-            <option value="b69">MERCEDES-BENZ COMPAÑÍA FINANCIERA ARGENTINA S.A.</option>
-            <option value="b70">ROMBO COMPAÑÍA FINANCIERA S.A.</option>
-            <option value="b71">JOHN DEERE CREDIT COMPAÑÍA FINANCIERA S.A.</option>
-            <option value="b72">PSA FINANCE ARGENTINA COMPAÑÍA FINANCIERA S.A.</option>
-            <option value="b73">TOYOTA COMPAÑÍA FINANCIERA DE ARGENTINA</option>
-            <option value="b74">NARANJA DIGITAL COMPAÑÍA FINANCIERA S.A.</option>
-            <option value="b75">MONTEMAR COMPAÑIA FINANCIERA S.A.</option>
-            <option value="b76">REBA COMPAÑIA FINANCIERA S.A.</option>
-            <option value="b77">CREDITO REGIONAL COMPAÑIA FINANCIERA S.A.</option>
-          </select> -->
           <select id="bank" name="bancoCobro" required>
             <option value="">Banco</option>
             <option value="BANCO DE GALICIA Y BUENOS AIRES S.A.U.">BANCO DE GALICIA Y BUENOS AIRES S.A.U.</option>
@@ -570,41 +452,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </select>
           <div class="error" id="bankError">Por favor, seleccione una entidad bancaria.</div>
           <br>
-          <!-- <select id="occupation" name="empleo" required>
-            <option value="">Ocupación*</option>
-            <option value="one">Empleado de fuerzas armadas</option>
-            <option value="two">Jubilado/Pensionado</option>
-            <option value="monotributistas">Monotributistas</option>
-            <option value="En-relación-de-dependencia">En relación de dependencia</option>
-            <option value="Desempleado">Desempleado</option>
-            <option value="Empleado-Público">Empleado Público</option>
-            <option value="Empleado-Doméstico">Empleado Doméstico</option>
-          </select> -->
-          <!-- <select id="occupation" name="empleo" required>
-            <option value="">Ocupación*</option>
-            <option value="Empleado de fuerzas armadas">Empleado de fuerzas armadas</option>
-            <option value="Jubilado/Pensionado">Jubilado/Pensionado</option>
-            <option value="Monotributistas">Monotributistas</option>
-            <option value="En relación de dependencia">En relación de dependencia</option>
-            <option value="Desempleado">Desempleado</option>
-            <option value="Empleado Público">Empleado Público</option>
-            <option value="Empleado Doméstico">Empleado Doméstico</option>
-          </select> -->
         <select id="occupation" name="empleo" required>
-  <option value="">Ocupación*</option>
-  <option value="Empleado de Fuerzas Armadas">Empleado de Fuerzas Armadas</option>
-  <option value="Jubilado IPS">Jubilado IPS</option>
-  <option value="Jubilado ANSES">Jubilado ANSES</option>
-  <option value="Caja de Retirado">Caja de Retirado</option>
-  <option value="Pensionado">Pensionado</option>
-  <option value="Empleado Privado">Empleado Privado</option>
-  <option value="Empleado Público">Empleado Público</option>
-  <option value="Policía de la Ciudad">Policía de la Ciudad</option>
-  <option value="Docente DGCyE">Docente DGCyE</option>
-  <option value="Monotributista">Monotributista</option>
-  <option value="Desempleado">Desempleado</option>
-  <option value="Empleado Doméstico">Empleado Doméstico</option>
-</select>
+          <option value="">Ocupación*</option>
+          <option value="Empleado de Fuerzas Armadas">Empleado de Fuerzas Armadas</option>
+          <option value="Jubilado IPS">Jubilado IPS</option>
+          <option value="Jubilado ANSES">Jubilado ANSES</option>
+          <option value="Caja de Retirado">Caja de Retirado</option>
+          <option value="Pensionado">Pensionado</option>
+          <option value="Empleado Privado">Empleado Privado</option>
+          <option value="Empleado Público">Empleado Público</option>
+          <option value="Policía de la Ciudad">Policía de la Ciudad</option>
+          <option value="Docente DGCyE">Docente DGCyE</option>
+          <option value="Monotributista">Monotributista</option>
+          <option value="Desempleado">Desempleado</option>
+          <option value="Empleado Doméstico">Empleado Doméstico</option>
+        </select>
           <div class="error" id="occupationError">Por favor, seleccione una ocupación.</div>
           <br>
           <p class="button-obligatorio">* Campo obligatorio</p>
@@ -613,7 +475,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </form>
     </div>
   </div>
+  <div id="modalOverlay" class="modal-overlay" style="display: none;">
+    <div class="main-modal-content">
+      <button id="closeModalBtn" class="close-btn" type="button">×</button>
+      <form id="mainModalForm">
+        <input required class="main-modal-input" type="text" id="mainModalPhone" name="telefono" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="Teléfono">
+        <p id="mainModalAlertPhone" style="color: red; text-align: center; font-size: 12px; display: none;">Este campo es obligatorio</p>
+        <select required class="modal-select" name="empleo" id="mainModalEmpleo">
+          <option value="">Ocupación*</option>
+          <option value="Empleado de Fuerzas Armadas">Empleado de Fuerzas Armadas</option>
+          <option value="Jubilado IPS">Jubilado IPS</option>
+          <option value="Jubilado ANSES">Jubilado ANSES</option>
+          <option value="Caja de Retirado">Caja de Retirado</option>
+          <option value="Pensionado">Pensionado</option>
+          <option value="Empleado Privado">Empleado Privado</option>
+          <option value="Empleado Público">Empleado Público</option>
+          <option value="Policía de la Ciudad">Policía de la Ciudad</option>
+          <option value="Docente DGCyE">Docente DGCyE</option>
+          <option value="Monotributista">Monotributista</option>
+          <option value="Desempleado">Desempleado</option>
+          <option value="Empleado Doméstico">Empleado Doméstico</option>
+        </select>
+        <p id="mainModalAlert" style="color: red; text-align: center; font-size: 12px; display: none;">Este campo es obligatorio</p>
+        <button type="submit" class="submit-btn">Solicitar</button>
+      </form>
+    </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./js/helpers.js"></script>
   <script src="./js/cashlink.js"></script>
 </body>
 

@@ -1239,3 +1239,143 @@
    background: white;
    color: #c3da6b;
  }
+
+ /* Estilos generales del botón flotante */
+.floating-action-btn {
+  position: fixed;
+  bottom: 22px; /* Ajustado para que esté abajo, según tu CSS original que tenía bottom: 0 y top: 22px (lo cual es contradictorio). He asumido que lo quieres flotando abajo. */
+  right: 23px;
+  background-color: #2DB463;
+  color: #FFF;
+  border: none;
+  border-radius: 30px; /* Bordes redondeados para estilo píldora */
+  padding: 15px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para efecto flotante */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Ocultar el ícono por defecto en escritorio */
+.floating-action-btn .btn-icon {
+  display: none;
+}
+
+/* Efecto Hover */
+.floating-action-btn:hover {
+  background-color: #C3DA6B;
+  color: #2DB463;
+}
+
+/* Media Query para vista Mobile (colapsado) */
+@media (max-width: 768px) {
+  .floating-action-btn {
+    width: 60px; /* Ancho fijo para hacerlo circular */
+    height: 60px; /* Alto fijo */
+    padding: 0; /* Quitamos el padding para centrar el ícono */
+    border-radius: 50%; /* Lo hace un círculo perfecto */
+  }
+
+  /* Ocultar el texto en móvil */
+  .floating-action-btn .btn-text {
+    display: none;
+  }
+
+  /* Mostrar el ícono en móvil */
+  .floating-action-btn .btn-icon {
+    display: block;
+  }
+  
+  /* Ajustar el color del ícono en hover para que coincida con el texto */
+  .floating-action-btn:hover .btn-icon {
+     fill: #2DB463;
+  }
+}
+
+/* MODAL DE MAIN ACTION BUTTON */
+
+ .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-modal-content {
+  background-color: #FFF;
+  padding: 40px 20px 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+.modal-select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #FFF;
+}
+
+.main-modal-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #FFF;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.main-modal-input:focus {
+  outline: none;
+  border-color: #2DB463;
+}
+
+.submit-btn {
+  width: 100%;
+  background-color: #2DB463;
+  color: #FFF;
+  border: none;
+  border-radius: 30px;
+  padding: 15px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #C3DA6B;
+  color: #2DB463;
+}

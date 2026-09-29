@@ -235,30 +235,60 @@ document.getElementById('loanForm').onsubmit  = function (e) {
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.ok === true) {
-					console.log(data)
 					submitButton.disabled = false
-					Swal.fire({
-						title: 'Éxito',
-						text: data.message || 'Formulario enviado correctamente.',
-						icon: 'success',
-						confirmButtonText: 'Aceptar',
-					})
+					// --- NUEVA LÓGICA DE REDIRECCIÓN A WHATSAPP ---
+
+					const empleoSeleccion = validarSeleccion(String(empleo)) 
+
+					if(typeof empleoSeleccion === 'string'){
+						Swal.fire({
+							title: 'Solicitud Registrada',
+							text: 'Serás redirigido a nuestro portal de préstamos.',
+							icon: 'success',
+							showConfirmButton: false,
+							timer: 2500
+						}).then((s)=>{
+							modal.style.display = 'none'
+							window.open(empleoSeleccion,'_blank')
+						})
+
+					}
+					if(typeof empleoSeleccion === 'boolean' && empleoSeleccion === true){
+						Swal.fire({
+							title: 'Solicitud Registrada',
+							text: 'Serás redirigido a nuestro chat de WhatsApp.',
+							icon: 'success',
+							showConfirmButton: false,
+							timer: 2500
+						}).then((s)=>{
+							const numeroTelefono = '5491150215049'
+							const mensajeTexto = 'Hola! Vengo por mi préstamo.'
+							//encodeURIComponent se encarga de convertir los espacios y el emoji a formato URL válido
+							const whatsappUrl = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensajeTexto)}`
+							
+							// Abre en pestaña nueva (en Desktop) o redirige a la App (en Celular)
+							modal.style.display = 'none'
+							window.open(whatsappUrl, '_blank')
+						})
+					}
+
+					if(!empleoSeleccion){
+						modal.style.display = 'none'
+						Swal.fire({
+							title: 'Solicitud Registrada',
+							text:'Nos pondremos en contacto con usted',
+							icon: 'success',
+							confirmButtonText: 'Aceptar',
+						})
+					}
+
+					// ----------------------------------------------
 
 					document.getElementById('loanForm').reset()
 					currentStep = 1
 					showStep(currentStep)
 					modal.style.display = 'none'
 					document.cookie = 'registro=1; max-age=60; path=/'
-
-					// --- NUEVA LÓGICA DE REDIRECCIÓN A WHATSAPP ---
-					const numeroTelefono = '5491150215049'
-					const mensajeTexto = 'Hola! Vengo por mi préstamo.'
-					//encodeURIComponent se encarga de convertir los espacios y el emoji a formato URL válido
-					const whatsappUrl = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensajeTexto)}`
-					
-					// Abre en pestaña nueva (en Desktop) o redirige a la App (en Celular)
-					window.open(whatsappUrl, '_blank')
-					// ----------------------------------------------
 
 					fetch('https://apis.ipcall.com.ar/v1/leads/web', {
 						method: 'POST',
@@ -306,7 +336,8 @@ document.getElementById('loanForm').onsubmit  = function (e) {
 						}),
 					})
 						.then((d) => d.json())
-						.then((r) => console.log(r))
+						.then((r) => console.log('Lead capturado correctamente'))
+						.catch((e) => console.error('Error al capturar el lead', e))
 				} else {
 					console.log(data)
 					submitButton.disabled = false
@@ -424,3 +455,83 @@ if (prevBtn2) {
 }
 
 showStep(currentStep)
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mainActionBtn = document.getElementById('mainActionBtn');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const mainModalForm = document.getElementById('mainModalForm');
+
+    mainActionBtn.addEventListener('click', () => {
+        modalOverlay.style.display = 'flex';
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+        modalOverlay.style.display = 'none';
+		document.getElementById('mainModalAlert').style.display = 'none'
+		document.getElementById('mainModalAlertPhone').style.display = 'none'
+        mainModalForm.reset();
+    });
+
+	mainModalForm.addEventListener('submit',async(e)=>{
+		e.preventDefault()
+		const formData = new FormData(e.target)
+
+		const mainModalSelect = formData.get('empleo')
+		const telefono = formData.get('telefono')
+
+		if((!mainModalSelect || mainModalSelect.trim().length === 0) && (!telefono || telefono.trim().length === 0)){
+			document.getElementById('mainModalAlert').style.display = 'block'
+			document.getElementById('mainModalAlertPhone').style.display = 'block'
+			return
+		}
+		document.getElementById('mainModalAlert').style.display = 'none'
+		document.getElementById('mainModalAlertPhone').style.display = 'none'
+
+		if(!mainModalSelect || mainModalSelect.trim().length === 0){
+			document.getElementById('mainModalAlert').style.display = 'block'
+			return
+		}
+
+		if(!telefono || telefono.trim().length === 0){
+			document.getElementById('mainModalAlertPhone').style.display = 'block'
+			return
+		}
+
+		document.getElementById('mainModalAlert').style.display = 'none'
+		document.getElementById('mainModalAlertPhone').style.display = 'none'
+
+		if(!validarSeleccion(String(mainModalSelect))){
+			modalOverlay.style.display = 'none';
+			mainModalForm.reset();
+			Swal.fire({
+				title: 'Solicitud Registrada',
+				text:'Nos pondremos en contacto con usted',
+				icon: 'success',
+				confirmButtonText: 'Aceptar',
+			})
+			return
+		}
+		if(typeof validarSeleccion(String(mainModalSelect)) === 'string'){
+			modalOverlay.style.display = 'none';
+			mainModalForm.reset();
+			await Swal.fire({
+				title: 'Solicitud Registrada',
+				text:'Serás redirigido a nuestro portal de préstamos',
+				icon: 'success',
+				showConfirmButton: false,
+				timer: 2500
+			})
+			window.open(validarSeleccion(String(mainModalSelect)),'_blank')
+			return
+		}
+		const numeroTelefono = '5491150215049'
+		const mensajeTexto = 'Quiero ser asesorado para un préstamo.'
+		//encodeURIComponent se encarga de convertir los espacios y el emoji a formato URL válido
+		const whatsappUrl = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensajeTexto)}`					
+		// Abre en pestaña nueva (en Desktop) o redirige a la App (en Celular)
+		modalOverlay.style.display = 'none';
+		mainModalForm.reset();
+		window.open(whatsappUrl, '_blank')
+	})
+});
